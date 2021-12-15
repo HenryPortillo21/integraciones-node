@@ -18,16 +18,15 @@ app.use(bodyParser.json());
 
 /* ------------------------------------------------------- */
 var port = process.env.PORT || 3000;
-app.listen(port, "0.0.0.0", function() {
+/*app.listen(port, "0.0.0.0", function() {
 console.log("Listening on Port 3000");
-/* ------------------------------------------------------- */
+ ------------------------------------------------------- */
 
-/*
-app.listen(8080, () => {
-  console.log("The server started on port 8080 !!!!!");
+
+app.listen(port, () => {
+  console.log("The server started on port 3000 !!!!!");
 });
 
-*/
 
 app.get("/", (req, res) => {
   res.send(
