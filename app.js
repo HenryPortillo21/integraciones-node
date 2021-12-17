@@ -58,7 +58,7 @@ async function sendMail(user, callback) {
     }
   });
 
-  if( this.tipo === 'informacion') {
+  if( this.tipoMail !== 'informacion') {
 
     let mailOptions = {
       from: '"Mi Iguana SV Información"<example.gimail.com>', // sender address
@@ -82,17 +82,19 @@ async function sendMail(user, callback) {
       <h4>Gracias por unirte a nuestra gran red de emprendedores tus credenciales son las siguientes </h4>`
     };
 
+    client.messages.create({
+      to: `+503${user.telefono}`,
+      from: +19145561919,
+      body: `Hola ${user.name}, Bienvenido a nuestro directorio de Emprendedores`
+    }).then(message => console.log(message.sid));
+
   
     // send mail with defined transport object
     let info = await transporter.sendMail(mailOptions);
     callback(info);
   }
 
-  client.messages.create({
-    to: `+503${user.telefono}`,
-    from: +19145561919,
-    body: `Hola ${user.name}, Bienvenido a nuestro directorio de Emprendedores`
-  }).then(message => console.log(message.sid));
+
 
   
 }
